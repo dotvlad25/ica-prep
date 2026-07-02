@@ -65,7 +65,7 @@
               "codeExample": {
                 "title": "Essential Dict Patterns",
                 "code": "data = {\"alice\": 100, \"bob\": 200, \"carol\": 150}\n\n# Safe get with default\nbalance = data.get(\"dave\", 0)         # 0 — no KeyError\n\n# Check membership\nif \"alice\" in data:\n    print(data[\"alice\"])              # 100\n\n# Iterate key-value pairs\nfor name, amount in data.items():\n    print(f\"{name}: {amount}\")\n\n# Dict comprehension — O(n)\ndoubled = {k: v * 2 for k, v in data.items()}\nprint(doubled)  # {'alice': 200, 'bob': 400, 'carol': 300}\n\n# Nested dict\naccounts = {}\naccounts.setdefault(\"alice\", {})[\"savings\"] = 500\nprint(accounts)  # {'alice': {'savings': 500}}",
-                "explanation": "`.get(key, default)` is safer than `data[key]` — it never raises KeyError. Use it whenever a key might not exist.",
+                "explanation": "`.get(key, default)` is safer than `data[key]` — it never raises KeyError. Use it whenever a key might not exist. When accumulating, reach for `setdefault`: `accounts.setdefault(uid, []).append(x)` creates the list on first use and appends in one line — the canonical grouping pattern in ICA solutions (or use `defaultdict(list)` if every access should auto-create).",
                 "runnable": true
               }
             },
@@ -85,7 +85,7 @@
               "codeExample": {
                 "title": "Counter for Top-N Problems",
                 "code": "from collections import Counter\n\ntransactions = [500, 200, 500, 100, 200, 500, 300]\nfreq = Counter(transactions)\n\n# Most common values\nprint(freq.most_common(2))   # [(500, 3), (200, 2)]\n\n# Arithmetic on counters\ndeposits = Counter({\"alice\": 300, \"bob\": 150})\nwithdrawals = Counter({\"alice\": 100, \"bob\": 50})\nnet = deposits - withdrawals\nprint(dict(net))   # {'alice': 200, 'bob': 100}",
-                "explanation": "`Counter.most_common(n)` returns the n most frequent elements as (element, count) tuples, sorted by frequency. This is O(n log k) — very efficient.",
+                "explanation": "`Counter.most_common(n)` returns the n most frequent elements as (element, count) tuples, sorted by frequency. This is O(n log k) — very efficient. Watch the tie-break: elements with equal counts come back in first-seen (insertion) order, NOT sorted by key. When a test expects a specific order among ties, sort explicitly, e.g. `sorted(freq.items(), key=lambda x: (-x[1], x[0]))` to break ties by key ascending.",
                 "runnable": true
               }
             }
@@ -155,7 +155,7 @@
               "codeExample": {
                 "title": "heapq for Top-N Problems",
                 "code": "import heapq\n\n# Min-heap basics — O(log n) push/pop\nscores = [85, 92, 78, 96, 88]\nheapq.heapify(scores)           # O(n) — convert list in-place\nprint(heapq.heappop(scores))    # 78 — smallest element\n\n# Top 3 largest — O(n log k)\ndata = [85, 92, 78, 96, 88, 71, 99]\ntop3 = heapq.nlargest(3, data)\nprint(top3)   # [99, 96, 92]\n\n# Max-heap trick: negate values\nbalances = {\"alice\": 500, \"bob\": 1200, \"carol\": 300}\nheap = [(-v, k) for k, v in balances.items()]\nheapq.heapify(heap)\nneg_val, name = heapq.heappop(heap)\nprint(f\"Richest: {name} with {-neg_val}\")   # Richest: bob with 1200",
-                "explanation": "Python only has a min-heap. To simulate a max-heap, negate all values. The negation trick is essential for 'top N accounts by balance' ICA problems.",
+                "explanation": "Python only has a min-heap. To simulate a max-heap, negate all values. The negation trick is essential for 'top N accounts by balance' ICA problems. One gotcha: if two entries tie on the heap key, Python compares the NEXT tuple element — so pushing `(priority, payload_obj)` can crash when payloads aren't orderable. Add a unique tie-breaker in the middle: `(priority, counter, item)` with an ever-incrementing `counter` guarantees a total order and stable FIFO among equal priorities.",
                 "runnable": true
               }
             }
@@ -304,7 +304,7 @@
               "codeExample": {
                 "title": "Transaction with Rollback",
                 "code": "from typing import Optional\nfrom copy import deepcopy\n\nclass Database:\n    def __init__(self):\n        self._store: dict[str, str] = {}\n        self._transaction: Optional[dict[str, str]] = None\n\n    def begin(self) -> None:\n        \"\"\"Start a transaction — snapshot current state.\"\"\"\n        self._transaction = deepcopy(self._store)\n\n    def set(self, key: str, value: str) -> None:\n        target = self._transaction if self._transaction is not None else self._store\n        target[key] = value\n\n    def get(self, key: str) -> Optional[str]:\n        target = self._transaction if self._transaction is not None else self._store\n        return target.get(key)\n\n    def commit(self) -> None:\n        \"\"\"Apply transaction changes to main store.\"\"\"\n        if self._transaction is not None:\n            self._store = self._transaction\n            self._transaction = None\n\n    def rollback(self) -> None:\n        \"\"\"Discard transaction changes.\"\"\"\n        self._transaction = None\n\ndb = Database()\ndb.set(\"x\", \"1\")\ndb.begin()\ndb.set(\"x\", \"2\")\ndb.set(\"y\", \"3\")\nprint(db.get(\"x\"))   # 2 (inside transaction)\ndb.rollback()\nprint(db.get(\"x\"))   # 1 (rolled back)\nprint(db.get(\"y\"))   # None (never committed)",
-                "explanation": "Using `deepcopy` for the transaction snapshot is simple and correct. For performance-critical scenarios, you'd use a write-ahead log instead, but correctness first.",
+                "explanation": "Using `deepcopy` for the transaction snapshot is simple and correct. Crucially, a shallow `dict(self._store)` is NOT safe here: it copies the top-level keys but shares the nested value objects, so mutating a value inside the transaction would leak into the original store. Use `deepcopy` whenever values are mutable (lists/dicts/objects); a shallow copy only suffices when values are immutable (str/int). For performance-critical scenarios you'd use a write-ahead log instead, but correctness first.",
                 "runnable": true
               }
             },
