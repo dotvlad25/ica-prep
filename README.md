@@ -245,4 +245,6 @@ If you are a rights holder and believe anything here is inappropriate, open an i
 
 ## License
 
-Private — personal project, not for redistribution.
+Licensed under the [PolyForm Noncommercial License 1.0.0](./LICENSE.md).
+
+In plain terms: you are free to use, copy, modify, and share this project for **any noncommercial purpose** — including your own interview preparation, studying, and personal or educational use. **Commercial use is not permitted** — for example, you may not sell it, or host/offer it as a paid service. See [`LICENSE.md`](./LICENSE.md) for the full terms. The software is provided **as is, without warranty and without liability** (see the Disclaimer above).
