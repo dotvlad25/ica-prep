@@ -6,7 +6,7 @@ import { getProgress } from '@/lib/progress';
 
 export default function Layout() {
   const [progress, setProgress] = useState(getProgress());
-  const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1, 2, 3]));
+  const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1, 2, 3, 4]));
 
   // Refresh progress when navigating back to sidebar
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Layout() {
             <span style={{ fontSize: 20 }}>⚡</span>
             <div>
               <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-text)' }}>ICA Prep</div>
-              <div style={{ fontSize: 11, color: 'var(--color-muted)' }}>Zero to hero in 3 days</div>
+              <div style={{ fontSize: 11, color: 'var(--color-muted)' }}>Zero to hero in 4 days</div>
             </div>
           </div>
         </div>

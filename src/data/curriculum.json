@@ -733,8 +733,8 @@
     },
     {
       "number": 3,
-      "title": "Full Mock Assessments",
-      "subtitle": "Timed 90-minute simulations of the real ICA",
+      "title": "Mock Assessments — Core Archetypes",
+      "subtitle": "Timed 90-minute simulations: storage & state systems",
       "theme": "assessment",
       "lessons": [],
       "exercises": [
@@ -1628,11 +1628,20 @@
               "timeGuidanceMinutes": 25
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Mock Assessments — Advanced Archetypes",
+      "subtitle": "Timed 90-minute simulations: path, windowing & scheduling systems",
+      "theme": "assessment",
+      "lessons": [],
+      "exercises": [
         {
           "id": "ex-filesystem",
-          "dayNumber": 3,
-          "order": 4,
+          "dayNumber": 4,
+          "order": 1,
           "title": "In-Memory File System",
           "subtitle": "Hierarchical storage with permissions and metadata",
           "archetype": "File System",
@@ -1971,8 +1980,8 @@
         },
         {
           "id": "ex-rate-limiter",
-          "dayNumber": 3,
-          "order": 5,
+          "dayNumber": 4,
+          "order": 2,
           "title": "Rate Limiter",
           "subtitle": "Fixed window, sliding window, burst allowance",
           "archetype": "Rate Limiter",
@@ -2224,8 +2233,8 @@
         },
         {
           "id": "ex-task-scheduler",
-          "dayNumber": 3,
-          "order": 6,
+          "dayNumber": 4,
+          "order": 3,
           "title": "Task Scheduler",
           "subtitle": "Priority queue, delayed execution, recurring tasks",
           "archetype": "Task Scheduler",

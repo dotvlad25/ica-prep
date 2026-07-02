@@ -112,15 +112,21 @@ pnpm dev
 | Archetypes (×4) | File system, rate limiter, task scheduler, file cache |
 | Threading & Locks | `threading.Lock`, `RLock`, thread-safe collections |
 
-### Day 3 — Mock Assessments (6 exercises × 6 levels)
+### Day 3 — Mock Assessments · Core Archetypes (3 exercises × 6 levels)
 | Exercise | Levels cover |
 |----------|-------------|
 | In-Memory Database | CRUD → prefix scan → TTL → transactions → threading → persistence |
 | Banking System | Accounts → transfers → ranking → cashback → concurrency → interest |
 | File Cache | Basic cache → eviction → byte limits → statistics → thread-safe → multi-tier |
+
+### Day 4 — Mock Assessments · Advanced Archetypes (3 exercises × 6 levels)
+| Exercise | Levels cover |
+|----------|-------------|
 | File System | Files/dirs → metadata → move/copy → permissions → symlinks → quotas |
 | Rate Limiter | Fixed window → sliding window → per-user → burst/penalty → token bucket → adaptive |
 | Task Scheduler | Queue → delayed → run-all-due → recurring → dependency DAG → worker pool |
+
+> Each mock is a 90-minute timed session, so ~3 fit in a focused day. The goal per mock is **Levels 1–4 in 90 min** (real ICA scope); Levels 5–6 are bonus extension practice.
 
 ## Mock Session Mode
 
