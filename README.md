@@ -221,10 +221,28 @@ Delete the `ica-mock-session-{exercise-id}` key (e.g., `ica-mock-session-ex-inme
 
 ## Disclaimer
 
-This is an independent, unofficial study tool. It is **not affiliated with, endorsed by, or sponsored by CodeSignal**. "CodeSignal" and "Industry Coding Assessment" are trademarks of their respective owner, referenced here only to describe the type of assessment this tool helps you prepare for.
+**Please read this section carefully.**
 
-All lessons, exercises, base classes, test cases, and solutions are **original content** created for this project. No actual CodeSignal assessment questions are reproduced, copied, or distributed. For the official assessment and preparation guidance, visit [codesignal.com](https://codesignal.com/).
+### Not affiliated with CodeSignal
+This is an independent, unofficial, personal project. It is **not affiliated with, endorsed by, sponsored by, or connected to CodeSignal** in any way. "CodeSignal," "Industry Coding Assessment," and "Industry Coding Framework" are trademarks of their respective owner and are referenced here **only nominatively** — to describe the general type of assessment this tool is meant to help someone practice for. No claim of ownership over those marks is made or implied.
+
+### Not an official preparation guide
+This is **not an official study guide, and not authoritative**. It is simply an app I built to help *myself* prepare for the ICA, shared as-is. It does not reflect how any real assessment is scored, structured, or administered, and using it does not guarantee any particular result on an actual assessment.
+
+### All content is original and invented
+Every lesson, exercise, prompt, base class, test case, hint, and solution in this repository is **original content that I wrote from scratch**. None of it is copied, scraped, transcribed, or otherwise derived from any real CodeSignal assessment or from CodeSignal's proprietary content. The problems are **invented practice examples** modeled loosely on common, publicly-known system-design *archetypes* (in-memory database, cache, file system, rate limiter, etc.) — ideas and formats that are general programming concepts, not anyone's protected content.
+
+**Any resemblance to actual assessment questions is purely coincidental and unintentional.** I have no knowledge of, and have not reproduced, the specific contents of any live CodeSignal assessment.
+
+### No warranty
+This software and its content are provided **"AS IS", without warranty of any kind**, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement. The code executes user-submitted Python locally with limited sandboxing (a subprocess timeout only) — run it only on your own machine and at your own risk. In no event shall the author be liable for any claim, damages, or other liability arising from the use of this software.
+
+### Respect the real assessment's rules
+If you take an actual CodeSignal assessment, **follow that assessment's own rules and terms.** This tool is for building general Python and system-design skills beforehand — not for use during a live, proctored assessment. For the official assessment and preparation guidance, visit [codesignal.com](https://codesignal.com/).
+
+### Contact
+If you are a rights holder and believe anything here is inappropriate, open an issue on this repository and I will address it promptly.
 
 ## License
 
-Private — not for redistribution.
+Private — personal project, not for redistribution.
