@@ -112,14 +112,14 @@ export function mdToHtml(md: string): string {
 
   processed = processed
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^### (.+)$/gm, '<h3 style="color:var(--color-accent);font-size:0.85rem;font-weight:600;margin:1rem 0 0.3rem">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 style="font-weight:700;font-size:1rem;margin:1rem 0 0.4rem">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 style="font-weight:700;font-size:1.25rem;margin:1rem 0 0.5rem">$1</h1>')
+    .replace(/^### (.+)$/gm, '<h3 style="color:var(--color-accent);font-size:1rem;font-weight:600;margin:1rem 0 0.3rem">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-weight:700;font-size:1.15rem;margin:1rem 0 0.4rem">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 style="font-weight:700;font-size:1.35rem;margin:1rem 0 0.5rem">$1</h1>')
     .replace(/\*\*(.+?)\*\*/g, '<strong style="color:var(--color-text)">$1</strong>')
-    .replace(/`([^`]+)`/g, '<code style="background:var(--color-surface-2);padding:0.1rem 0.35rem;border-radius:3px;font-family:var(--font-mono);font-size:0.8em;color:var(--color-accent)">$1</code>')
-    .replace(/^- (.+)$/gm, '<li style="margin:0.15rem 0;font-size:0.85rem;color:var(--color-muted);line-height:1.5">$1</li>')
-    .replace(/\n\n/g, '</p><p style="margin:0.4rem 0;color:var(--color-muted);font-size:0.85rem;line-height:1.5">')
-    .replace(/^(?!<[hul]|%%CODE)(.+)$/gm, '<p style="margin:0.4rem 0;color:var(--color-muted);font-size:0.85rem;line-height:1.5">$1</p>')
+    .replace(/`([^`]+)`/g, '<code style="background:var(--color-surface-2);padding:0.1rem 0.35rem;border-radius:3px;font-family:var(--font-mono);font-size:0.9em;color:var(--color-accent)">$1</code>')
+    .replace(/^- (.+)$/gm, '<li style="margin:0.2rem 0;font-size:0.95rem;color:var(--color-muted);line-height:1.6">$1</li>')
+    .replace(/\n\n/g, '</p><p style="margin:0.5rem 0;color:var(--color-muted);font-size:0.95rem;line-height:1.6">')
+    .replace(/^(?!<[hul]|%%CODE)(.+)$/gm, '<p style="margin:0.5rem 0;color:var(--color-muted);font-size:0.95rem;line-height:1.6">$1</p>')
     .replace(/<p><\/p>/g, '');
 
   // Restore code blocks with syntax highlighting
@@ -127,7 +127,7 @@ export function mdToHtml(md: string): string {
     const highlighted = highlightPython(code);
     processed = processed.replace(
       `%%CODEBLOCK_${i}%%`,
-      `<pre style="background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:6px;padding:0.75rem 1rem;overflow-x:auto;margin:0.5rem 0;font-family:var(--font-mono);font-size:0.8rem;line-height:1.5"><code>${highlighted}</code></pre>`,
+      `<pre style="background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:6px;padding:0.75rem 1rem;overflow-x:auto;margin:0.5rem 0;font-family:var(--font-mono);font-size:0.875rem;line-height:1.6"><code>${highlighted}</code></pre>`,
     );
   });
 

@@ -1,6 +1,7 @@
 export interface CodeExample {
   caption?: string;
   code: string;
+  explanation?: string;
 }
 
 export interface LessonSection {

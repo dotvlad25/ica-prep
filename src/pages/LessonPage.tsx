@@ -150,6 +150,18 @@ export default function LessonPage() {
                     }}>
                       <code dangerouslySetInnerHTML={{ __html: highlightPython(sections[activeSection].codeExample!.code) }} />
                     </pre>
+                    {sections[activeSection].codeExample!.explanation && (
+                      <div style={{
+                        marginTop: 8,
+                        padding: '8px 12px',
+                        borderLeft: '2px solid var(--color-border)',
+                        fontSize: 13,
+                        lineHeight: 1.5,
+                        color: 'var(--color-muted)',
+                      }}>
+                        💡 {sections[activeSection].codeExample!.explanation}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
