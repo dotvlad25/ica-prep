@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: oklch(0.13 0.01 260);
+  --color-surface: oklch(0.17 0.01 260);
+  --color-surface-2: oklch(0.21 0.01 260);
+  --color-border: oklch(0.28 0.01 260);
+  --color-text: oklch(0.93 0.01 260);
+  --color-muted: oklch(0.60 0.01 260);
+  --color-accent: oklch(0.72 0.19 250);
+  --color-accent-dim: oklch(0.72 0.19 250 / 0.15);
+  --color-green: oklch(0.72 0.17 145);
+  --color-green-dim: oklch(0.72 0.17 145 / 0.15);
+  --color-red: oklch(0.65 0.20 25);
+  --color-red-dim: oklch(0.65 0.20 25 / 0.15);
+  --color-yellow: oklch(0.82 0.16 85);
+  --color-yellow-dim: oklch(0.82 0.16 85 / 0.15);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+.prose h1, .prose h2, .prose h3 { color: var(--color-text); font-weight: 600; margin: 1rem 0 0.5rem; }
+.prose h1 { font-size: 1.5rem; }
+.prose h2 { font-size: 1.2rem; }
+.prose h3 { font-size: 1rem; }
+.prose p { margin: 0.5rem 0; color: var(--color-text); }
+.prose ul, .prose ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+.prose li { margin: 0.2rem 0; }
+.prose code { background: var(--color-surface-2); padding: 0.1rem 0.3rem; border-radius: 3px; font-family: var(--font-mono); font-size: 0.85em; color: var(--color-accent); }
+.prose pre { background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: 6px; padding: 1rem; overflow-x: auto; margin: 0.75rem 0; }
+.prose pre code { background: none; padding: 0; color: var(--color-text); }
+.prose strong { color: var(--color-text); font-weight: 600; }
+.prose blockquote { border-left: 3px solid var(--color-accent); padding-left: 1rem; color: var(--color-muted); margin: 0.75rem 0; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
