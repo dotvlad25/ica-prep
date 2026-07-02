@@ -1,18 +1,20 @@
-# ICA Prep — Local React Study Tool
+# ICA Prep — Python Coding Assessment Study Tool
 
-A self-contained, offline-capable study tool for preparing for Anthropic's ICA (Internal Coding Assessment). Dark-themed UI with an embedded Monaco code editor and a local Python execution sandbox.
+A self-contained, offline-capable study tool for preparing for the Python ICA (Industry Coding Assessment) — a timed, multi-level OOP system-building exam. Practice real assessment problems in an in-browser environment with an embedded Monaco code editor and a local Python execution sandbox.
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+> Built as a React + FastAPI app, but the subject you practice is **Python** — this is a Python interview-prep tool, not a React tutorial.
+
+![Python](https://img.shields.io/badge/Practice-Python-3776AB?logo=python)
+![React](https://img.shields.io/badge/Built%20with-React%2019-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript)
-![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)
 
 ---
 
 ## Features
 
-- **16 lessons** across 2 days — Python syntax, OOP, data structures, system-building patterns
-- **6 mock exercises** with 6 progressive levels each (36 challenges total)
+- **16 Python lessons** across 2 days — syntax, OOP, data structures, system-building patterns
+- **6 mock exercises** with 6 progressive levels each (36 Python coding challenges total)
 - **Timed mock sessions** — 90-minute countdown with visual progress bar
 - **Monaco editor** with Python syntax highlighting
 - **Local Python test runner** — code executes via a FastAPI subprocess sandbox
@@ -215,7 +217,7 @@ Delete the `ica-mock-session-{exercise-id}` key (e.g., `ica-mock-session-ex-inme
 
 ## Not Included
 
-- **AI Code Review** — requires an Anthropic API key; available only in the hosted version
+- **AI Code Review** — requires an LLM API key; available only in the hosted version
 
 ## License
 
