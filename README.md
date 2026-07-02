@@ -1,6 +1,6 @@
 # ICA Prep — Python Coding Assessment Study Tool
 
-A self-contained, offline-capable study tool for preparing for the Python ICA (Industry Coding Assessment) — a timed, multi-level OOP system-building exam. Practice real assessment problems in an in-browser environment with an embedded Monaco code editor and a local Python execution sandbox.
+A self-contained, offline-capable study tool for preparing for the Python ICA — the [**CodeSignal Industry Coding Assessment**](https://codesignal.com/) (also called the Industry Coding Framework): a timed, multi-level OOP system-building exam. Practice assessment-style problems in an in-browser environment with an embedded Monaco code editor and a local Python execution sandbox.
 
 > Built as a React + FastAPI app, but the subject you practice is **Python** — this is a Python interview-prep tool, not a React tutorial.
 
@@ -218,6 +218,12 @@ Delete the `ica-mock-session-{exercise-id}` key (e.g., `ica-mock-session-ex-inme
 ## Not Included
 
 - **AI Code Review** — requires an LLM API key; available only in the hosted version
+
+## Disclaimer
+
+This is an independent, unofficial study tool. It is **not affiliated with, endorsed by, or sponsored by CodeSignal**. "CodeSignal" and "Industry Coding Assessment" are trademarks of their respective owner, referenced here only to describe the type of assessment this tool helps you prepare for.
+
+All lessons, exercises, base classes, test cases, and solutions are **original content** created for this project. No actual CodeSignal assessment questions are reproduced, copied, or distributed. For the official assessment and preparation guidance, visit [codesignal.com](https://codesignal.com/).
 
 ## License
 
