@@ -359,7 +359,7 @@ export default function ExercisePage() {
           gap: 6,
           flexShrink: 0,
         }}>
-          ⚠ Click <strong style={{ margin: '0 3px' }}>Start Session</strong> to begin the 90-minute timer before running tests.
+          ⚠ Click <strong style={{ margin: '0 3px' }}>Start Session</strong> to begin the 90-minute timer. Goal: complete <strong style={{ margin: '0 3px' }}>Levels 1–4</strong> in 90 min (real ICA scope). Levels 5–6 are bonus extension practice.
         </div>
       )}
 
@@ -407,6 +407,15 @@ export default function ExercisePage() {
             >
               {passed ? <CheckCircle2 size={12} /> : locked ? <Lock size={12} /> : <Unlock size={12} />}
               L{l.level}: {l.title}
+              {l.level >= 5 && (
+                <span style={{
+                  fontSize: 9, fontWeight: 600, padding: '1px 5px', borderRadius: 8,
+                  background: 'var(--color-surface-2)', color: 'var(--color-muted)',
+                  textTransform: 'uppercase', letterSpacing: '0.04em',
+                }}>
+                  Bonus
+                </span>
+              )}
             </button>
           );
         })}
@@ -858,8 +867,8 @@ export default function ExercisePage() {
                 <X size={16} />
               </button>
             </div>
-            {Object.entries(cheatSheet).map(([key, section]) => (
-              <div key={key} style={{ marginBottom: 20 }}>
+            {cheatSheet.sections.map((section, idx) => (
+              <div key={idx} style={{ marginBottom: 20 }}>
                 <div style={{
                   fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em',
                   color: 'var(--color-accent)', marginBottom: 8,

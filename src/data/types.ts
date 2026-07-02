@@ -75,5 +75,5 @@ export interface CheatSheetSection {
 
 export interface CurriculumData {
   curriculum: Day[];
-  cheatSheet: Record<string, CheatSheetSection>;
+  cheatSheet: { sections: CheatSheetSection[] };
 }

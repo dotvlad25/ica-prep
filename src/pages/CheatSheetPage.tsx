@@ -20,7 +20,8 @@ export default function CheatSheetPage() {
         Quick reference for ICA patterns — keep this open during practice.
       </p>
 
-      {Object.entries(cheatSheet).map(([key, section]) => {
+      {cheatSheet.sections.map((section, idx) => {
+        const key = String(idx);
         const isOpen = open.has(key);
         return (
           <div key={key} style={{
