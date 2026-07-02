@@ -30,7 +30,7 @@ export default function Dashboard() {
           ⚡ Your Prep Dashboard
         </h1>
         <p style={{ color: 'var(--color-muted)', margin: 0 }}>
-          Zero to hero in 3 days — structured, focused, built for the real Anthropic ICA.
+          Zero to hero in 3 days — structured, focused, built for the real ICA.
         </p>
       </div>
 
