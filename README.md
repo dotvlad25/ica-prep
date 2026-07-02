@@ -4,6 +4,8 @@ A self-contained, offline-capable study tool for preparing for the Python ICA �
 
 > Built as a React + FastAPI app, but the subject you practice is **Python** — this is a Python interview-prep tool, not a React tutorial.
 
+> ⚠️ **Unofficial & not affiliated.** This is a personal project I built to help myself prepare — it is **not an official preparation guide** and is **not affiliated with, endorsed by, or sponsored by CodeSignal**. All problems are original, invented examples. Please read the full [**Disclaimer**](#disclaimer) before using.
+
 ![Python](https://img.shields.io/badge/Practice-Python-3776AB?logo=python)
 ![React](https://img.shields.io/badge/Built%20with-React%2019-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript)
