@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { curriculum } from '@/data/curriculum';
 import { getProgress } from '@/lib/progress';
-import { CheckCircle2, Code2, BookOpen, Calendar } from 'lucide-react';
+import { CheckCircle2, Code2, BookOpen } from 'lucide-react';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -18,10 +18,6 @@ export default function Dashboard() {
   const doneLessons = completedLessons.size;
   const doneExercises = Object.values(progress.exercises).filter(e => e.highestLevel >= 6).length;
 
-  const target = new Date('2026-07-03');
-  const now = new Date();
-  const daysLeft = Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-
   return (
     <div style={{ padding: '32px 40px', maxWidth: 900 }}>
       {/* Header */}
@@ -34,34 +30,10 @@ export default function Dashboard() {
         </p>
       </div>
 
-      {/* Countdown */}
-      {daysLeft > 0 && (
-        <div style={{
-          background: 'var(--color-accent-dim)',
-          border: '1px solid var(--color-accent)',
-          borderRadius: 8,
-          padding: '12px 16px',
-          marginBottom: 24,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
-          color: 'var(--color-accent)',
-        }}>
-          <Calendar size={16} />
-          <span><strong>{daysLeft} day{daysLeft !== 1 ? 's' : ''}</strong> until July 3 — assessment day</span>
-        </div>
-      )}
-      {daysLeft === 0 && (
-        <div style={{ background: 'var(--color-red-dim)', border: '1px solid var(--color-red)', borderRadius: 8, padding: '12px 16px', marginBottom: 24, color: 'var(--color-red)' }}>
-          🚨 Assessment day is today! Good luck.
-        </div>
-      )}
-
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 32 }}>
         <StatCard label="Lessons Done" value={`${doneLessons}/${totalLessons}`} icon={<BookOpen size={18} />} />
         <StatCard label="Exercises Done" value={`${doneExercises}/${totalExercises}`} icon={<Code2 size={18} />} />
-        <StatCard label="Days Left" value={String(Math.max(0, daysLeft))} icon={<Calendar size={18} />} />
       </div>
 
       {/* Day cards */}
