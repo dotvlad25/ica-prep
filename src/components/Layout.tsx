@@ -1,12 +1,25 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Code2, LayoutDashboard, FileText, CheckCircle2, Circle, ChevronDown, ChevronRight } from 'lucide-react';
+import { Code2, LayoutDashboard, FileText, CheckCircle2, Circle, ChevronDown, ChevronRight, ChevronLeft, ChevronsRight } from 'lucide-react';
 import { curriculum } from '@/data/curriculum';
 import { getProgress } from '@/lib/progress';
 
 export default function Layout() {
   const [progress, setProgress] = useState(getProgress());
   const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1, 2, 3, 4]));
+  // Sidebar stays collapsed to a hover rail on every page; hovering reveals it.
+  const [collapsed, setCollapsed] = useState<boolean>(true);
+  const [hovering, setHovering] = useState(false);
+
+  // Sidebar is visible when pinned open, or when hovering the reveal rail.
+  const sidebarVisible = !collapsed || hovering;
+
+  function toggleCollapsed() {
+    setCollapsed(prev => {
+      if (!prev) setHovering(false);
+      return !prev;
+    });
+  }
 
   // Refresh progress when navigating back to sidebar
   useEffect(() => {
@@ -30,25 +43,80 @@ export default function Layout() {
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', position: 'relative' }}>
+      {/* Hover-reveal rail (only when collapsed) */}
+      {collapsed && (
+        <div
+          onMouseEnter={() => setHovering(true)}
+          onClick={() => setHovering(true)}
+          title="Show navigation"
+          style={{
+            width: 14,
+            minWidth: 14,
+            background: 'var(--color-surface)',
+            borderRight: '1px solid var(--color-border)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: 20,
+          }}
+        >
+          <ChevronsRight size={14} style={{ color: 'var(--color-muted)' }} />
+        </div>
+      )}
+
       {/* Sidebar */}
-      <aside style={{
-        width: 260,
-        minWidth: 260,
-        background: 'var(--color-surface)',
-        borderRight: '1px solid var(--color-border)',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-      }}>
+      <aside
+        onMouseLeave={() => { if (collapsed) setHovering(false); }}
+        style={{
+          width: 260,
+          minWidth: 260,
+          background: 'var(--color-surface)',
+          borderRight: '1px solid var(--color-border)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          // When collapsed, float as an overlay so it doesn't steal editor width.
+          ...(collapsed ? {
+            position: 'absolute' as const,
+            top: 0,
+            left: 14,
+            height: '100%',
+            zIndex: 30,
+            transform: sidebarVisible ? 'translateX(0)' : 'translateX(-110%)',
+            boxShadow: sidebarVisible ? '4px 0 24px rgba(0,0,0,0.45)' : 'none',
+            transition: 'transform 0.18s ease',
+          } : {}),
+        }}
+      >
         {/* Logo */}
         <div style={{ padding: '16px 16px 12px', borderBottom: '1px solid var(--color-border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 20 }}>⚡</span>
-            <div>
+            <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-text)' }}>ICA Prep</div>
               <div style={{ fontSize: 11, color: 'var(--color-muted)' }}>Zero to hero in 4 days</div>
             </div>
+            <button
+              onClick={toggleCollapsed}
+              title={collapsed ? 'Pin sidebar open' : 'Collapse sidebar'}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 24,
+                height: 24,
+                padding: 0,
+                background: 'none',
+                border: 'none',
+                borderRadius: 6,
+                color: 'var(--color-muted)',
+                cursor: 'pointer',
+              }}
+            >
+              {collapsed ? <ChevronsRight size={16} /> : <ChevronLeft size={16} />}
+            </button>
           </div>
         </div>
 
